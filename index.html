@@ -14,23 +14,23 @@
 
       <form id="gameSetupForm">
         <div class="mb-3">
-          <label for="gameSetupForm-playerCount" class="form-label">Ilość graczy <span data-game-setting="playerCount"></span></label>
+          <label for="gameSetupForm-playerCount" class="form-label">Ilość graczy (<span data-game-setting="playerCount"></span>)</label>
           <input type="range" class="form-range" min="2" max="4" id="gameSetupForm-playerCount" name="playerCount">
         </div>
 
         <div class="mb-3">
-          <label for="gameSetupForm-legCount" class="form-label">Ilość legów <span data-game-setting="legCount"></span></label>
+          <label for="gameSetupForm-legCount" class="form-label">Ilość legów (<span data-game-setting="legCount"></span>)</label>
           <input type="range" class="form-range" min="3" max="5" id="gameSetupForm-legCount" name="legCount">
         </div>
 
         <div class="mb-3">
-          <label for="gameSetupForm-setCount" class="form-label">Ilość setów <span data-game-setting="setCount"></span></label>
+          <label for="gameSetupForm-setCount" class="form-label">Ilość setów (<span data-game-setting="setCount"></span>)</label>
           <input type="range" class="form-range" min="2" max="5" id="gameSetupForm-setCount" name="setCount">
         </div>
 
         <p><strong>Imiona graczy</strong></p>  
         
-        <div class="mb-3 d-none" data-form-template="playerName">
+        <div class="mb-3 d-none" data-template="playerName">
           <input type="text" class="form-control">
         </div>
 
@@ -48,30 +48,24 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">First to {numberOfSets}</th>
+                <th scope="col">First to <span data-game-setting="setCount"></span></th>
                 <th scope="col">Sets</th>
                 <th scope="col">Legs</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr class="table-primary">
-                <th scope="row">Łukasz</th>
-                <td>0</td>
-                <td>0</td>
-                <td>480</td>
-              </tr>
-              <tr>
-                <th scope="row">Michał</th>
-                <td>0</td>
-                <td>0</td>
-                <td>501</td>
+              <tr class="d-none table-primary" data-template="playerRow">
+                <th scope="row" data-template-value="name"></th>
+                <td data-template-value="sets"></td>
+                <td data-template-value="legs"></td>
+                <td data-template-value="points"></td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <th colspan="4">
-                  Round {roundNumber}
+                  Round <span data-game-state="roundNumber"></span>
                 </th>
               </tr>
             </tfoot>
@@ -80,9 +74,9 @@
 
         <div class="col-4">
           <div class="btn-group d-flex" role="group">
-            <button type="button" class="flex-fill btn btn-outline-danger">Miss</button>
-            <button type="button" class="flex-fill btn btn-outline-success">25</button>
-            <button type="button" class="flex-fill btn btn-outline-success">Bull</button>
+            <button type="button" class="flex-fill btn btn-outline-danger" data-score="miss">Miss</button>
+            <button type="button" class="flex-fill btn btn-outline-success" data-score="25">25</button>
+            <button type="button" class="flex-fill btn btn-outline-success" data-score="50">Bull</button>
           </div>
 
           <hr>
@@ -91,17 +85,17 @@
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="1" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="1" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="1" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="2" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="2" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="2" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -110,17 +104,17 @@
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>3</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="3" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="3" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="3" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>4</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="4" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="4" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="4" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -129,17 +123,17 @@
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>5</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="5" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="5" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="5" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
                 <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>6</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="6" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="6" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="6" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -147,37 +141,18 @@
           <div class="row">
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>5</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>7</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="7" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="7" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="7" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>6</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>8</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="8" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="8" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="8" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -185,37 +160,18 @@
           <div class="row">
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>9</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="9" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="9" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="9" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>10</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="10" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="10" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="10" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -223,37 +179,18 @@
           <div class="row">
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>11</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="11" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="11" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="11" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>12</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="12" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="12" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="12" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
@@ -261,18 +198,75 @@
           <div class="row">
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>13</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="13" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="13" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="13" data-score-multiplier="3">x3</button>
               </div>
             </div>
             <div class="col-6">
               <div class="btn-group d-flex mb-1" role="group">
-                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x1</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x2</button>
-                <button type="button" class="w-25 btn btn-sm btn-outline-primary">x3</button>
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>14</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="14" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="14" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="14" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>15</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="15" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="15" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="15" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>16</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="16" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="16" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="16" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>17</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="17" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="17" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="17" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>18</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="18" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="18" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="18" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>19</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="19" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="19" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="19" data-score-multiplier="3">x3</button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="btn-group d-flex mb-1" role="group">
+                <button type="button" class="w-25 btn btn-sm btn-secondary" disabled>20</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="20" data-score-multiplier="1">x1</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="20" data-score-multiplier="2">x2</button>
+                <button type="button" class="w-25 btn btn-sm btn-outline-primary" data-score="20" data-score-multiplier="3">x3</button>
               </div>
             </div>
           </div>
