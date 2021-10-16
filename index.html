@@ -8,29 +8,30 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="gameSetupForm" class="d-none">
+  <div data-component="gameSetupForm">
     <div class="container">
       <h1>Rzutki Setup</h1>
 
-      <form>
+      <form id="gameSetupForm">
         <div class="mb-3">
-          <label for="playerCount" class="form-label">Ilość graczy (2)</label>
-          <input type="range" class="form-range" min="2" max="4" id="playerCount" value="2">
+          <label for="gameSetupForm-playerCount" class="form-label">Ilość graczy <span data-game-setting="playerCount"></span></label>
+          <input type="range" class="form-range" min="2" max="4" id="gameSetupForm-playerCount" name="playerCount">
         </div>
 
         <div class="mb-3">
-          <label for="playerCount" class="form-label">Ilość legów (3)</label>
-          <input type="range" class="form-range" min="3" max="5" id="playerCount" value="3">
+          <label for="gameSetupForm-legCount" class="form-label">Ilość legów <span data-game-setting="legCount"></span></label>
+          <input type="range" class="form-range" min="3" max="5" id="gameSetupForm-legCount" name="legCount">
         </div>
 
         <div class="mb-3">
-          <label for="playerCount" class="form-label">Ilość setów (2)</label>
-          <input type="range" class="form-range" min="2" max="5" id="playerCount" value="2">
+          <label for="gameSetupForm-setCount" class="form-label">Ilość setów <span data-game-setting="setCount"></span></label>
+          <input type="range" class="form-range" min="2" max="5" id="gameSetupForm-setCount" name="setCount">
         </div>
 
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Gracz X nazwa</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+        <p><strong>Imiona graczy</strong></p>  
+        
+        <div class="mb-3 d-none" data-form-template="playerName">
+          <input type="text" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Start</button>
@@ -38,7 +39,7 @@
     </div>
   </div>
 
-  <div id="gameInterface">
+  <div data-component="gameInterface" class="d-none">
     <div class="container">
       <h1>Rzutki Gramy</h1>
 
@@ -281,6 +282,6 @@
     </div>
   </div>
     
-    
+  <script src="./index.js"></script>
 </body>
 </html>
