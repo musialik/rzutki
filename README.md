@@ -1,0 +1,3 @@
+# Rzutki
+
+Kalkulator do rzutek.
